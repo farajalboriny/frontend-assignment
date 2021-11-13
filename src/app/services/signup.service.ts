@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class SignupService {
-baseUrl=environment.baseUrl
+baseUrl=environment.baseUrl;
   constructor(private httpClient:HttpClient) { }
 
   register(user:User):Observable<User> {
