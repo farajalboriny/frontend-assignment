@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "heroku-postbuild":"ng build --prod && npm install -g http-server-spa",
-    "start": "http-server-spa dist/angular-assignment index.html $PORT",
+    "heroku-postbuild":"ng build --prod",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint":"ng lint",
@@ -37,5 +37,8 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "typescript": "~4.4.3"
+  },
+  "engines": { 
+    "node": "16.13.0", "npm": "8.1.0" 
   }
 }
