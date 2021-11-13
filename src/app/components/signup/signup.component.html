@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{
+  font-family: Calibri, Helvetica, sans-serif;
+  background-color: pink;
+}
+.container {
+    padding: 50px;
+  background-color: lightblue;
+}
+
+input[type=text], input[type=password], textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+input[type=text]:focus, input[type=password]:focus {
+  background-color: orange;
+  outline: none;
+}
+ div {
+            padding: 10px 0;
+         }
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+.registerbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+.registerbtn:hover {
+  opacity: 1;
+}
+</style>
+</head>
+<body>
+<form>
+  <div class="container">
+  <hr>
+  <label> <b>Username</b> </label>
+  <input class="input100" id="userName" type="text" name="username" placeholder="User name"
+  [(ngModel)]="newUser.username"
+  required #userName="ngModel" [class.is-invalid]="userName.invalid && userName.touched"
+>
+
+<div>
+<label>
+Gender :
+</label><br>
+<input type="radio" value="Male" name="gender" checked="true" [(ngModel)]="newUser.gender"> Male
+<input type="radio" value="Female" name="gender" [(ngModel)]="newUser.gender"> Female
+
+</div>
+
+    <label><b>Password</b></label>
+    <input class="password" type="password" name="pass" placeholder="Password" [(ngModel)]="newUser.password"
+    required pattern=".{4,8}" #pwd="ngModel"
+    [class.is-invalid]="pwd.invalid && pwd.touched"
+>
+
+    <label><b>Re-type Password</b></label>
+    <input class="password" type="password" name="pass" placeholder="Confirm Password" [(ngModel)]="confirmPass"
+    required #pwd2="ngModel"
+    [class.is-invalid]="pwd2.invalid && pwd2.touched"
+>
+    
+    <label>birthday</label>
+<input type="date" id="birthDate" name="birthDate"
+       required  [(ngModel)]="newUser.birthDate" >
+    <small style="color:red">  
+      {{msg}}
+    </small>
+       
+    <button type="submit" class="registerbtn"[disabled]="newUser.password!=confirmPass||newUser.username==null||newUser.password==null
+    ||confirmPass==null||newUser.password==newUser.username" (click)=submit()>Register</button>
+    <small  style="color:red" *ngIf="newUser.password!=confirmPass||newUser.username==null||newUser.password==null
+           ||confirmPass==null||newUser.password==newUser.username"
+          >All fields are required , passwords must match , username must be different from password and password must be at between 4-8 characters</small>
+          <p style="color: #4CAF50;">{{msg2}}</p>
+  </div>
+</form>
+
+</body>
+</html>
