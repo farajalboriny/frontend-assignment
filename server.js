@@ -1,8 +1,8 @@
-const express = require('express');
-const path = require('path');
+import express, { static } from 'express';
+import { join } from 'path';
 const app = express();
-app.use(express.static(__dirname + '/dist/<app-name>'));
+app.use(static(__dirname + '/dist/<app-name>'));
 app.get('/*', function(req,res) {
-res.sendFile(path.join(__dirname+
+res.sendFile(join(__dirname+
 '/dist/assignment/index.html'));});
 app.listen(process.env.PORT || 8080);
